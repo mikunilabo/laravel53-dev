@@ -12,14 +12,24 @@
 */
 
 /**
- * Closure...
+ * Auth...
  */
-// Route::get('/', function () {
-//	 return view('welcome');
-// });
-
 Auth::routes();
 
-Route::get('/',	 'Controller@index');
+Route::get('/',                       'Controller@index');
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home',                   'HomeController@index');
+
+
+/**
+ * Passport Test...
+ */
+Route::group([
+	'middleware' => [],
+	"prefix"     => 'passport',
+], function () {
+	Route::get( 'token/get',          'PassportController@getTokens');
+	Route::get( 'token/post',         'PassportController@postToken');
+	
+	Route::get( 'clients/post',       'PassportController@postClients');
+});
