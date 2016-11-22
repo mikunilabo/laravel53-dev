@@ -57,10 +57,10 @@ return [
 		/**
 		 * バックエンド
 		 */
-		'admin' => [
-				'driver'   => 'session',
-				'provider' => 'admins',
-		],
+// 		'admin' => [
+// 				'driver'   => 'session',
+// 				'provider' => 'admins',
+// 		],
 	],
 	
 	/*
@@ -112,14 +112,14 @@ return [
 				'provider' => 'users',
 				'email'    => 'auth.emails.password',  // View
 				'table'    => 'password_resets',
-				'expire'   => 60,                   // 有効時間(分)
+				'expire'   => 60,                      // 有効時間(分)
 		],
 			
 // 		'admin' => [
 // 				'provider' => 'admins',
 // 				'email'    => 'admin.auth.emails.password',// View
 // 				'table'    => 'admin_password_resets',
-// 				'expire'   => 60,                       // 有効時間(分)
+// 				'expire'   => 60,                          // 有効時間(分)
 // 		],
 	],
 	
