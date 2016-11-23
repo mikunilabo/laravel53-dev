@@ -18,7 +18,7 @@ class TestController extends Controller
 	 */
 	public function __construct()
 	{
-		$this->middleware('auth');
+// 		$this->middleware('auth');
 		
 		$this->passport = new Passport();
 		$this->passport->postToken();
@@ -82,7 +82,7 @@ class TestController extends Controller
 		$ch->setSslVerifypeer(false);
 // 		dd($ch);
 		$response = $ch->exec();
-// 		echo $response;exit;
+		echo $response;exit;
 // 		dd($response);
 		$ch->close();
 		

@@ -6,6 +6,7 @@ use App\Lib\Api\Passport;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Laravel\Passport\Client;
 
 class UserController extends Controller
 {
@@ -23,13 +24,17 @@ class UserController extends Controller
 	 * users
 	 * @method GET
 	 */
-	public function get($client_id)
+	public function get(Request $request, $client_id)
 	{
-		return \Response::json(['id' => $client_id], 200);
+// 		$Client = Client::find($client_id);
+// 		dd( $Client->tokens()->get() );
 		
-// 		$User = User::find(2);
+		// アクセストークンの認証ユーザが返されてる？
+		$User = $request->user();
 		
-		if( !$User )
+		dd($User);
+		
+		if( $User->id !== intval($client_id) )
 			return \Response::json(['Bad Request!'], 400);
 		else 
 // 			return $User->toJson();

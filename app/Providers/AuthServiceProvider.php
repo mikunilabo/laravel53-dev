@@ -36,7 +36,7 @@ class AuthServiceProvider extends ServiceProvider
 		Passport::tokensExpireIn(Carbon::now()->addDays(15));
 		Passport::refreshTokensExpireIn(Carbon::now()->addDays(30));
 		
-		// ユーザがトークン発行時に、無効トークンの削除実施
+		// ユーザがトークン発行するタイミングで、他の無効トークンの削除実施
 		Passport::pruneRevokedTokens();
 	}
 }
