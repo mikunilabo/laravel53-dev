@@ -63,15 +63,45 @@ class Passport
 	{
 		$result = $this->authenticate();
 		
-		if( empty($result->access_token) ) \Response::json(['error' => 'BAD REQUEST'], 400);
+		if( !empty($result->access_token) )
+		{
+			$this->accessToken  = $result->access_token;
+			$this->refreshToken = $result->refresh_token;
+			$this->expiresIn    = $result->expires_in;
+		}
 		
-		$this->accessToken  = $result->access_token;
-		$this->refreshToken = $result->refresh_token;
-		$this->expiresIn    = $result->expires_in;
+		return $result;
 	}
 	
 	/**
-	 * Codeを使用した認可
+	 * 認証済みクライアントを返す
+	 * oauth/clients
+	 * @method POST
+	 */
+	public function getClients()
+	{
+// 		$this->postToken();
+		
+		$url = url('oauth/clients');
+		$this->method = 'GET';
+		
+		$header = [
+				'X-Requested-With: XMLHttpRequest',
+// 				"Authorization: Bearer {$this->accessToken}",
+				'Content-type: application/json',
+		];
+		
+		$param = [
+				"name"          => "Code Grant Client",
+				"redirect"      => 'http://192.168.33.15/auth/callback',
+		];
+		
+		return $this->call($param, $header, $url);
+	}
+	
+	/**
+	 * クライアント作成
+	 * ( Codeを使用した認可 )
 	 * oauth/clients
 	 * @method POST
 	 */
@@ -86,7 +116,7 @@ class Passport
 // 				'X-CSRF-TOKEN: '. csrf_token(),// APIは除外済み(/oauth/*~)
 // 				"Authorization: Bearer {$this->accessToken}",
 		];
-	
+		
 		$param = [
 				"name"          => "Code Grant Client",
 				"redirect"      => 'http://192.168.33.15/auth/callback',
@@ -132,33 +162,58 @@ class Passport
 // 				"Authorization: Bearer {$this->accessToken}",
 		];
 		
+		// Personal Access Client
+// 		$param = [
+// 				"client_id"     => 1,
+// 				"client_secret" => 'drxqbYYMjNP7g1oCeS3a5if0d0x3ykpvj4QFNzaA',
+// 				"username"      => "redbull.816.com@gmail.com",
+// 				"password"      => 'kuniyasu1983',
+// 				"grant_type"    => "password",
+// 				"scope"         =>  "*",
+// 		];
+		
+		// Password Grant Client
 		$param = [
 				"client_id"     => 2,
-				"client_secret" => "dBqslMZWYQxrO2lWMqcoOMyAoYQdv67dcBWsu2du",
+				"client_secret" => 'dBqslMZWYQxrO2lWMqcoOMyAoYQdv67dcBWsu2du',
 				"username"      => "redbull.816.com@gmail.com",
 				"password"      => 'kuniyasu1983',
 				"grant_type"    => "password",
-				"scope"         =>  "",
+				"scope"         =>  "*",
 		];
 		
-		return $this->call($param, $header, $url);
+		// Code Grant Client
+// 		$param = [
+// 				"client_id"     => 3,
+// 				"client_secret" => 'qHTnzVh6QYDZfkGRC6h221Nxbt9HIL9U3UqUnAvC',
+// 				"username"      => "redbull.816.com@gmail.com",
+// 				"password"      => 'kuniyasu1983',
+// 				"grant_type"    => "password",
+// 				"scope"         =>  "*",
+// 		];
+		
+		$result = $this->call($param, $header, $url);
+		
+		if( empty($result->access_token) ) return dd($result);;
+		
+		return $result;
 	}
 	
 	/**
 	 * Setter...
 	 */
-	public function setTest($test)
+	public function setMethod($method)
 	{
-		$this->test = $test;
+		$this->method = $method;
 		return $this;
 	}
 	
 	/**
 	 * Getter...
 	 */
-	public function getTest()
+	public function getAccessToken()
 	{
-		return $this->test;
+		return $this->accessToken;
 	}
 	
 }

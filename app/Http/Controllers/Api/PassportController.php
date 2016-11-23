@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Lib\Api\Passport;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class PassportController extends Controller
@@ -38,6 +39,17 @@ class PassportController extends Controller
 	{
 		$Passport = new Passport();
 		dd( $Passport->postToken() );;
+	}
+	
+	/**
+	 * 認証済み全クライアントを返す
+	 * oauth/clients
+	 * @method GET
+	 */
+	public function getClients()
+	{
+		$Passport = new Passport();
+		dd( $Passport->getClients() );
 	}
 	
 	/**

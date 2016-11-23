@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::get('/user', function (Request $request) {
-// 	return $request->user();
-// })->middleware('auth:api');
+/**
+ * users エンドポイント
+ */
+Route::group([
+		'middleware' => [],
+		'prefix'     => 'users',
+],
+function () {
+	Route::get( '/{client_id}',      'Api\UserController@get')->name('api.users.get');
+// 	Route::post('/',                 'Api\UserController@post');
+	Route::put( '/{client_id}',      'Api\UserController@put');
+// 	Route::delete('/{client_id}',    'Api\UserController@delete');
+});

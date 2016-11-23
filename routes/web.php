@@ -28,8 +28,20 @@ Route::group([
 	'middleware' => [],
 	"prefix"     => 'passport',
 ], function () {
-	Route::get( 'token/get',          'PassportController@getTokens');
-	Route::get( 'token/post',         'PassportController@postToken');
+	Route::get( 'token/get',          'Api\PassportController@getTokens');
+	Route::get( 'token/post',         'Api\PassportController@postToken');
 	
-	Route::get( 'clients/post',       'PassportController@postClients');
+	Route::get( 'clients/get',        'Api\PassportController@getClients');
+	Route::get( 'clients/post',       'Api\PassportController@postClients');
+});
+
+/**
+ * 
+ */
+Route::group([
+		'middleware' => [],
+		"prefix"     => 'test/api/users',
+], function () {
+	Route::get( 'get',                'TestController@getUsers');
+	Route::get( 'put',                'TestController@putUsers');
 });

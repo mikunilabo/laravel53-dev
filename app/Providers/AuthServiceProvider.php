@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
+use Carbon\Carbon;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -30,5 +31,12 @@ class AuthServiceProvider extends ServiceProvider
 		 * Laravel Passport...
 		 */
 		Passport::routes();
+		
+		// 有効期限の設定
+		Passport::tokensExpireIn(Carbon::now()->addDays(15));
+		Passport::refreshTokensExpireIn(Carbon::now()->addDays(30));
+		
+		// ユーザがトークン発行時に、無効トークンの削除実施
+		Passport::pruneRevokedTokens();
 	}
 }
