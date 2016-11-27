@@ -19,8 +19,8 @@ class CreateTestsTable extends Migration
 		{
 			$table->increments('id');
 			
-// 			$table->json('json')->nullable();
-// 			$table->jsonb('jsonb')->nullable();
+			$table->json('json_col')->nullable();
+			$table->jsonb('jsonb_col')->nullable();
 			
 			$table->timestamps();
 			$table->softDeletes();

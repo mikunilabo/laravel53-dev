@@ -38,7 +38,7 @@ class PassportController extends Controller
 	public function postToken()
 	{
 		$Passport = new Passport();
-		dd( $Passport->postToken() );;
+		dd( $Passport->postToken() );
 	}
 	
 	/**

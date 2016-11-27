@@ -54,6 +54,6 @@ Route::group([
 		'middleware' => [],
 		"prefix"     => 'api/users',
 ], function () {
-	Route::get( 'get',                'TestController@getUsers');
-	Route::get( 'put',                'TestController@putUsers');
+	Route::get( 'get',                'PassportTestController@getUsers');
+	Route::get( 'put',                'PassportTestController@putUsers');
 });

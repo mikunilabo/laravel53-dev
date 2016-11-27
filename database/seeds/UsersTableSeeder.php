@@ -17,11 +17,11 @@ class UsersTableSeeder extends Seeder
 		DB::table('users')->truncate();
 		DB::table('users')->insert([
 			[
-				'id'		   => 1,
-				'name'		 => 'test',
-				'email'		=> 'test@user.jp',
-				'password'	 => Hash::make('p1p1p1p1'),
-				'status'	   => 1,
+				'id'           => 1,
+				'name'         => 'test',
+				'email'        => 'redbull.816.com@gmail.com',
+				'password'     => Hash::make('kuniyasu1983'),
+				'status'       => 1,
 				'created_at'   => Carbon::now(),
 				'updated_at'   => Carbon::now(),
 				'confirmed_at' => Carbon::now(),

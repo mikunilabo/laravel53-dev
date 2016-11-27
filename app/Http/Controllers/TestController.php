@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Lib\Api\cURL;
-use App\Lib\Api\Passport;
+use App\Models\Test;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-	private $passport;
-	private $method;
-	
 	/**
 	 * Create a new controller instance.
 	 *
@@ -18,10 +14,7 @@ class TestController extends Controller
 	 */
 	public function __construct()
 	{
-// 		$this->middleware('auth');
-		
-		$this->passport = new Passport();
-		$this->passport->postToken();
+		$this->middleware('auth');
 	}
 
 	/**
@@ -31,61 +24,10 @@ class TestController extends Controller
 	 */
 	public function index()
 	{
-		dd('here');
+		$Test = Test::firstOrCreate([]);
+		$Test->json_col = $Test->jsonb_col = $Test->toJson();
+		$Test->save();
+		dd($Test);
 	}
 	
-	/**
-	 * api/usersのテスト
-	 */
-	public function getUsers()
-	{
-		$clientId = 2;
-		$url = route('api.users.get', $clientId);
-		$this->method = 'GET';
-		
-		$header = [
-				'X-Requested-With: XMLHttpRequest',
-				"Authorization: Bearer {$this->passport->getAccessToken()}",
-				'Content-type: application/json',
-		];
-		
-		$param = [
-				//
-		];
-		
-		$result = $this->call($param, $header, $url);
-		return dd($result);
-	}
-	
-	/**
-	 * api/usersのテスト
-	 */
-	public function putUsers()
-	{
-		dd('put');
-	}
-	
-	/**
-	 * Testのためここに配置
-	 * cURLライブラリで接続後、JSONをパースして返す
-	 */
-	private function call($param, $header, $url)
-	{
-		$ch = new cURL();
-		$ch->init();
-		$ch->setUrl($url);
-		$ch->setIsJson(true);
-		$ch->setMethod($this->method);
-// 		$ch->setUserPwd($this->clientId, $this->clientSecret);
-		$ch->setHeader($header);
-		$ch->setParameterFromArray($param);
-		$ch->setSslVerifypeer(false);
-// 		dd($ch);
-		$response = $ch->exec();
-		echo $response;exit;
-// 		dd($response);
-		$ch->close();
-		
-		return json_decode($response);
-	}
 }
