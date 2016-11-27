@@ -22,6 +22,17 @@ Route::get('/home',                   'HomeController@index');
 
 
 /**
+ * Some Test...
+ */
+Route::group([
+		'middleware' => [],
+		"prefix"     => 'test',
+], function () {
+	Route::get( '/',                  'TestController@index');
+});
+
+
+/**
  * Passport Test...
  */
 Route::group([
@@ -35,12 +46,13 @@ Route::group([
 	Route::get( 'clients/post',       'Api\PassportController@postClients');
 });
 
+
 /**
- * 
+ * API Test...
  */
 Route::group([
 		'middleware' => [],
-		"prefix"     => 'test/api/users',
+		"prefix"     => 'api/users',
 ], function () {
 	Route::get( 'get',                'TestController@getUsers');
 	Route::get( 'put',                'TestController@putUsers');
