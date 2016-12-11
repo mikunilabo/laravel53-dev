@@ -16,44 +16,47 @@
  */
 Auth::routes();
 
-Route::get('/',                       'Controller@index');
-
-Route::get('/home',                   'HomeController@index');
-
-
-/**
- * Some Test...
- */
 Route::group([
-		'middleware' => [],
-		"prefix"     => 'test',
+		'middleware' => ['web'],
 ], function () {
-	Route::get( '/',                  'TestController@index');
-});
-
-
-/**
- * Passport Test...
- */
-Route::group([
-	'middleware' => [],
-	"prefix"     => 'passport',
-], function () {
-	Route::get( 'token/get',          'Api\PassportController@getTokens');
-	Route::get( 'token/post',         'Api\PassportController@postToken');
 	
-	Route::get( 'clients/get',        'Api\PassportController@getClients');
-	Route::get( 'clients/post',       'Api\PassportController@postClients');
-});
-
-
-/**
- * API Test...
- */
-Route::group([
-		'middleware' => [],
-		"prefix"     => 'api/users',
-], function () {
-	Route::get( 'get',                'PassportTestController@getUsers');
-	Route::get( 'put',                'PassportTestController@putUsers');
+	Route::get('/',                       'Controller@index');
+	Route::get('/home',                   'HomeController@index');
+	
+	
+	/**
+	 * Some Test...
+	 */
+	Route::group([
+			'prefix'     => 'test',
+	], function () {
+		Route::get( '/',                  'TestController@index');
+	});
+	
+	
+	/**
+	 * Passport Test...
+	 */
+	Route::group([
+			'prefix'     => 'passport',
+			'namespace'  => 'Api',
+	], function () {
+		Route::get( 'token/get',          'PassportController@getTokens');
+		Route::get( 'token/post',         'PassportController@postToken');
+		
+		Route::get( 'clients/get',        'PassportController@getClients');
+		Route::get( 'clients/post',       'PassportController@postClients');
+	});
+	
+	
+	/**
+	 * API Test...
+	 */
+	Route::group([
+			'prefix'     => 'api/clients',
+	], function () {
+		Route::get( 'get',                'PassportTestController@getClients');
+		Route::get( 'put',                'PassportTestController@putClients');
+	});
+	
 });

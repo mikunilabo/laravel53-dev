@@ -18,7 +18,7 @@ class PassportTestController extends Controller
 	 */
 	public function __construct()
 	{
-// 		$this->middleware('auth');
+		$this->middleware('auth');
 		
 		$this->passport = new Passport();
 		$this->passport->postToken();
@@ -35,12 +35,12 @@ class PassportTestController extends Controller
 	}
 	
 	/**
-	 * api/usersのテスト
+	 * api/clientsのテスト
 	 */
-	public function getUsers()
+	public function getClients()
 	{
 		$clientId = 2;
-		$url = route('api.users.get', $clientId);
+		$url = route('api.clients.get', $clientId);
 		$this->method = 'GET';
 		
 		$header = [
@@ -58,9 +58,9 @@ class PassportTestController extends Controller
 	}
 	
 	/**
-	 * api/usersのテスト
+	 * api/clientsのテスト
 	 */
-	public function putUsers()
+	public function putClients()
 	{
 		dd('put');
 	}

@@ -14,15 +14,16 @@ use Illuminate\Http\Request;
 */
 
 /**
- * users エンドポイント
+ * clients エンドポイント
  */
 Route::group([
 		'middleware' => [],
-		'prefix'     => 'users',
+		'prefix'     => 'clients',
+		'namespace'  => 'Api',
 ],
 function () {
-	Route::get( '/{client_id}',      'Api\UserController@get')->name('api.users.get');
-// 	Route::post('/',                 'Api\UserController@post');
-	Route::put( '/{client_id}',      'Api\UserController@put');
-// 	Route::delete('/{client_id}',    'Api\UserController@delete');
+	Route::get( '/{client_id}',      'ClientController@get')->name('api.clients.get');
+// 	Route::post('/',                 'ClientController@post');
+	Route::put( '/{client_id}',      'ClientController@put');
+// 	Route::delete('/{client_id}',    'ClientController@delete');
 });

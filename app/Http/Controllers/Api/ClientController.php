@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Passport\Client;
 
-class UserController extends Controller
+class ClientController extends Controller
 {
 	/**
 	 * Create a new controller instance.
@@ -17,7 +17,9 @@ class UserController extends Controller
 	 */
 	public function __construct()
 	{
-		$this->middleware('auth:api');
+		// ミドルウェア要検証
+// 		$this->middleware('auth:api');
+		$this->middleware('api');
 	}
 	
 	/**
@@ -31,8 +33,6 @@ class UserController extends Controller
 		
 		// アクセストークンの認証ユーザが返されてる？
 		$User = $request->user();
-		
-		dd($User);
 		
 		if( $User->id !== intval($client_id) )
 			return \Response::json(['Bad Request!'], 400);
