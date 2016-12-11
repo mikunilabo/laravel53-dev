@@ -10,21 +10,23 @@ class User extends Authenticatable
 {
 	use Notifiable, HasApiTokens;
 	
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
 	protected $fillable = [
-		'name', 'email', 'password',
+			'name',
+			'email',
+			'password',
 	];
-
-	/**
-	 * The attributes that should be hidden for arrays.
-	 *
-	 * @var array
-	 */
+	
 	protected $hidden = [
-		'password', 'remember_token',
+			'password',
+			'remember_token',
+	];
+	
+	protected $dates = [
+			'confirmation_sent_at',
+			'confirmed_at',
+	];
+	
+	protected $casts = [
+			'status' => 'bool',
 	];
 }

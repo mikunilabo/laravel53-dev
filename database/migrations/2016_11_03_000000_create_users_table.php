@@ -24,9 +24,9 @@ class CreateUsersTable extends Migration
 			$table->smallInteger('status')->default(1);
 			$table->rememberToken();
 			
-			$table->string('confirmation_token')->nullable();	  // 認証用トークン
+			$table->string('confirmation_token')->nullable();      // 認証用トークン
 			$table->timestamp('confirmation_sent_at')->nullable(); // 認証メール送信日時
-			$table->timestamp('confirmed_at')->nullable();		 // 承認日時
+			$table->timestamp('confirmed_at')->nullable();         // 承認日時
 			
 			$table->timestamps();
 			$table->softDeletes();

@@ -24,9 +24,12 @@ class TestController extends Controller
 	 */
 	public function index()
 	{
-		$Test = Test::firstOrCreate([]);
-		$Test->json_col = $Test->jsonb_col = $Test->toJson();
+// 		$Test = Test::firstOrCreate([]);
+// 		dd($Test);
+		
+		$Test = Test::create([]);
 		$Test->save();
+		
 		dd($Test);
 	}
 	

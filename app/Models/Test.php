@@ -10,16 +10,23 @@ class Test extends Model
 	use SoftDeletes;
 	
 	protected $fillable = [
-			'json',
-			'jsonb',
+			//
+	];
+	
+	protected $guards = [
+			//
 	];
 	
 	protected $hidden = [
 			//
 	];
 	
-	protected $casts = [
+	protected $dates = [
 			//
+	];
+	
+	protected $casts = [
+			'boolean' => 'bool',
 	];
 	
 }

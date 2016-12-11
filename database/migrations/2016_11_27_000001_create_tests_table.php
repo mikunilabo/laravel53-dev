@@ -17,49 +17,90 @@ class CreateTestsTable extends Migration
 		
 		Schema::create('tests', function (Blueprint $table)
 		{
-// 			$table->increments('id');
-// 			$table->smallIncrements('smallIncrements');
-// 			$table->mediumIncrements('mediumIncrements');
-// 			$table->bigIncrements('bigIncrements');
+			// bigint(20)
+			$table->bigInteger('bigInteger')->default(0);
 			
-			$table->bigInteger('bigInteger');
-			$table->boolean('boolean');
+			// bigint(20)
+// 			$table->bigIncrements('id');// AIなので主キーになる
 			
-			$table->char('char', 5);
+			// int(11)
+			$table->integer('integer')->default(0);
 			
-			$table->dateTimeTz('dateTimeTz');
-			$table->decimal('decimal');
+			// int(10) UNSIGNED
+			$table->increments('id');// AIなので主キーになる
 			
-			$table->enum('enum', []);
+			// mediumint(9)
+			$table->mediumInteger('mediumInteger')->default(0);
 			
-			$table->float('float');
+			// mediumint(8)
+// 			$table->mediumIncrements('id');// AIなので主キーになる
 			
-			$table->integer('integer');
-// 			$table->integer('integer_ai_unsigned', true, true);
+			// smallint(6)
+			$table->smallInteger('smallInteger')->default(0);
 			
-			$table->longText('longText');
+			// smallint(5) UNSIGNED
+// 			$table->smallIncrements('smallIncrements');// AIなので主キーになる
 			
-			$table->mediumInteger('mediumInteger');
-			$table->mediumText('mediumText');
+			// smallint(5) UNSIGNED
+// 			$table->unsignedSmallInteger('unsignedSmallInteger', true);// AIなので主キーになる
 			
-// 			$table->nullableTimestamps();
+			// tinyint(4)
+			$table->tinyInteger('tinyInteger')->default(0);
 			
-			$table->softDeletesTz();
+			// tinyint(3)
+			$table->unsignedTinyInteger('unsignedTinyInteger')->default(0);
 			
-			$table->timestampsTz('timestampsTz');
-			$table->timeTz('timeTz');
-			$table->tinyInteger('tinyInteger');
-// 			$table->tinyInteger('tinyInteger_ai_unsigned', true, true);
+			// tinyint(1)
+			$table->boolean('boolean')->default(false);
 			
-			$table->unsignedSmallInteger('unsignedSmallInteger',true);
-			$table->uuid('uuid');
+			// decimal(8,2) (8桁中小数点以下2桁)
+			$table->decimal('decimal')->default(0.00);
 			
+			// double(8,2)(8桁中小数点以下2桁)
+			$table->float('float', 10, 5)->default(12345.00001);
 			
+			// enum('') (文字列定数をリストする)
+			$table->enum('enum', ['red', 'blue', 'yellow'])->nullable();
 			
+			// longtext
+			$table->longText('longText')->nullable();
+			
+			// mediumtext
+			$table->mediumText('mediumText')->nullable();
+			
+			// text
+			$table->text('text')->nullable();
+			
+			// char(5) おそらく固定長
+			$table->char('char', 5)->nullable();
+			
+			// varchar(255) おそらく可変長
+			$table->string('string', 255)->nullable();
+			
+			// json
 // 			$table->json('json_col')->nullable();
+			
+			// jsonb
 // 			$table->jsonb('jsonb_col')->nullable();
 			
+			// datetime
+			$table->dateTimeTz('dateTimeTz')->nullable();
+			
+			// time
+			$table->timeTz('timeTz')->nullable();
+			
+			// char(36)
+			$table->uuid('uuid')->default('uuid');// 用途不明、ユニークID?
+			
+			// timestamp(null許可) (created_at, updated_at)
+			$table->timestampsTz('timestampsTz');
+// 			$table->nullableTimestamps();
+			
+			// timestamp (created_at, updated_at)
 // 			$table->timestamps();
+			
+			// timestamp(null許可) (deleted_at)
+			$table->softDeletesTz();
 // 			$table->softDeletes();
 		});
 	}
