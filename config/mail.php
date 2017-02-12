@@ -58,7 +58,7 @@ return [
 	
 	'from' => [
 		'address' => env('MAIL_FROM_ADDRESS', null),
-		'name'	=> env('MAIL_FROM_NAME', null),
+		'name'    => env('MAIL_FROM_NAME', null),
 	],
 	
 	/*
@@ -86,7 +86,7 @@ return [
 	*/
 	
 	'username' => env('MAIL_USERNAME'),
-		
+	
 	'password' => env('MAIL_PASSWORD', null),
 	
 	/*
@@ -99,9 +99,9 @@ return [
 	| connection so that the application will be able to send messages.
 	|
 	*/
-
+	
 	'password' => env('MAIL_PASSWORD'),
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Sendmail System Path
@@ -127,17 +127,17 @@ return [
 	
 	'cc' => [
 		'address1' => env('MAIL_CC_ADDRESS1', null),
-		'name1'	=> env('MAIL_CC_NAME1', null),
+		'name1'    => env('MAIL_CC_NAME1', null),
 	],
 	
 	'bcc' => [
 		'address1' => env('MAIL_BCC_ADDRESS1', null),
-		'name1'	=> env('MAIL_BCC_NAME1', null),
+		'name1'    => env('MAIL_BCC_NAME1', null),
 	],
 	
 	'reply_to' => [
 		'address'  => env('MAIL_REPLYTO_ADDRESS', null),
-		'name'	 => env('MAIL_REPLYTO_NAME', null)
+		'name'     => env('MAIL_REPLYTO_NAME', null)
 	],
 	
 	// Mail "Pretend" 実際には送信せずにログ出力のみで留める時はtrue

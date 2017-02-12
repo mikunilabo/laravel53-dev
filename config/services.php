@@ -20,7 +20,7 @@ return [
 	],
 	
 	'ses' => [
-		'key'	=> env('SES_KEY'),
+		'key'    => env('SES_KEY'),
 		'secret' => env('SES_SECRET'),
 		'region' => env('SES_REGION'),
 	],
@@ -31,7 +31,7 @@ return [
 	
 	'stripe' => [
 		'model'  => App\Models\User::class,
-		'key'	=> env('STRIPE_KEY'),
+		'key'    => env('STRIPE_KEY'),
 		'secret' => env('STRIPE_SECRET'),
 	],
 	

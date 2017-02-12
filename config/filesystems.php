@@ -49,14 +49,14 @@ return [
 		],
 		
 		'public' => [
-			'driver'	 => 'local',
-			'root'	   => storage_path('app/public'),
+			'driver'     => 'local',
+			'root'       => storage_path('app/public'),
 			'visibility' => 'public',
 		],
 		
 		's3' => [
 			'driver' => 's3',
-			'key'	=> env('S3_ACCESS_KEY'),
+			'key'    => env('S3_ACCESS_KEY'),
 			'secret' => env('S3_SECRET_KEY'),
 			'region' => env('S3_REGION'),
 			'bucket' => env('S3_BUCKET'),
@@ -65,16 +65,16 @@ return [
 	],
 	
 	'ftp' => [
-			'driver'   => 'ftp',
-			'host'	 => 'ftp.example.com',
-			'username' => 'your-username',
-			'password' => 'your-password',
+			'driver'    => 'ftp',
+			'host'      => 'ftp.example.com',
+			'username'  => 'your-username',
+			'password'  => 'your-password',
 	],
 	
 	'rackspace' => [
-			'driver'	=> 'rackspace',
+			'driver'    => 'rackspace',
 			'username'  => 'your-username',
-			'key'	   => 'your-key',
+			'key'       => 'your-key',
 			'container' => 'your-container',
 			'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
 			'region'	=> 'IAD',

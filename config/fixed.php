@@ -14,8 +14,8 @@ return [
 	 */
 	'admin_role' => [
 			'ADMINISTRATOR' => 'システム管理者',
-			'OPERATOR'	  => '運用担当者',
-			'READER'		=> '閲覧専用者',
+			'OPERATOR'      => '運用担当者',
+			'READER'        => '閲覧専用者',
 	],
 	
 	/**
@@ -30,11 +30,11 @@ return [
 	 * アップロードディレクトリ
 	 */
 	'upload_path' => [
-			'postImage'		  => 'uploads/post/',		  // 投稿画像
-			'postThumbnail'	  => 'uploads/post/thumbnail/',// 投稿サムネイル
+			'postImage'       => 'uploads/post/',
+			'postThumbnail'   => 'uploads/post/thumbnail/',
 	],
 	
-	'no_image_path'			  => '/images/no_image_gr.png',   // 登録画像無し
+	'no_image_path'           => '/images/no_image_gr.png',
 		
 	/**
 	 * 月
