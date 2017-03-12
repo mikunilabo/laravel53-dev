@@ -17,15 +17,15 @@ use Illuminate\Foundation\Inspiring;
  * Laravel Default Command...
  */
 Artisan::command('inspire', function (){
-	$this->comment(Inspiring::quote());
+    $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
 
 /**
  * Refresh...
  */
 Artisan::command('refresh', function (){
-	$this->call('config:cache');
-	$this->call('route:cache');
-	$this->call('view:clear');
-	$this->call('optimize');
+    $this->call('config:cache');
+    $this->call('route:cache');
+    $this->call('view:clear');
+    $this->call('optimize');
 })->describe('Do Refresh Commands!');

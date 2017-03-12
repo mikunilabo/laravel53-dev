@@ -17,13 +17,13 @@ use Illuminate\Http\Request;
  * clients エンドポイント
  */
 Route::group([
-		'middleware' => [],
-		'prefix'     => 'clients',
-		'namespace'  => 'Api',
+        'middleware' => [],
+        'prefix'     => 'clients',
+        'namespace'  => 'Api',
 ],
 function () {
-	Route::get( '/{client_id}',      'ClientController@get')->name('api.clients.get');
-// 	Route::post('/',                 'ClientController@post');
-	Route::put( '/{client_id}',      'ClientController@put');
-// 	Route::delete('/{client_id}',    'ClientController@delete');
+    Route::get( '/{client_id}',      'ClientController@get')->name('api.clients.get');
+//     Route::post('/',                 'ClientController@post');
+    Route::put( '/{client_id}',      'ClientController@put');
+//     Route::delete('/{client_id}',    'ClientController@delete');
 });
